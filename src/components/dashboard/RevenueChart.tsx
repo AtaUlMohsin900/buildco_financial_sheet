@@ -19,10 +19,10 @@ export const RevenueChart = ({ data }: RevenueChartProps) => {
       return (
         <div className="glass-card p-3 !bg-background/95">
           <p className="text-sm text-muted-foreground mb-1">{payload[0].payload.description}</p>
-          <p className="text-sm font-orbitron text-neon-green">
+          <p className="text-sm font-inter text-neon-green">
             Received: Rs {payload[0]?.value?.toLocaleString() || 0}
           </p>
-          <p className="text-sm font-orbitron text-neon-orange">
+          <p className="text-sm font-inter text-neon-orange">
             Paid: Rs {payload[1]?.value?.toLocaleString() || 0}
           </p>
         </div>
@@ -37,7 +37,7 @@ export const RevenueChart = ({ data }: RevenueChartProps) => {
         <div className="p-2 rounded-lg bg-neon-cyan/10">
           <TrendingUp className="w-5 h-5 text-neon-cyan" />
         </div>
-        <h2 className="text-xl font-orbitron font-semibold text-foreground">
+        <h2 className="text-xl font-inter font-semibold text-foreground">
           Transaction Overview
         </h2>
       </div>

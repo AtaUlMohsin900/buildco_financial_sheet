@@ -27,9 +27,9 @@ const Index = () => {
   return (
     <div className="min-h-screen p-4 md:p-8 cyber-grid scanline">
       <div className="max-w-7xl mx-auto">
-        <DashboardHeader 
-          lastUpdated={lastUpdated} 
-          onRefresh={refetch} 
+        <DashboardHeader
+          lastUpdated={lastUpdated}
+          onRefresh={refetch}
           loading={loading}
           error={error}
         />
@@ -102,12 +102,12 @@ const Index = () => {
 
         {/* Footer */}
         <footer className="mt-8 text-center text-sm text-muted-foreground animate-fade-in">
-          <p className="font-orbitron">
-            NEXUS ANALYTICS v1.0 • Data synced from Google Sheets
+          <p>
+            BUILD CO ASSOCIATES v1.0 • Data synced from Google Sheets
           </p>
         </footer>
       </div>
-    </div>
+    </div >
   );
 };
 

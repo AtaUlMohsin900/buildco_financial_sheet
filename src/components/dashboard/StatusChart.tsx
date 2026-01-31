@@ -19,7 +19,7 @@ export const StatusChart = ({ stats }: StatusChartProps) => {
           <p className="text-sm font-medium" style={{ color: payload[0].payload.color }}>
             {payload[0].name}
           </p>
-          <p className="text-lg font-orbitron font-bold text-foreground">
+          <p className="text-lg font-inter font-bold text-foreground">
             Rs {payload[0].value.toLocaleString()}
           </p>
         </div>
@@ -34,7 +34,7 @@ export const StatusChart = ({ stats }: StatusChartProps) => {
         <div className="p-2 rounded-lg bg-neon-magenta/10">
           <PieChartIcon className="w-5 h-5 text-neon-magenta" />
         </div>
-        <h2 className="text-xl font-orbitron font-semibold text-foreground">
+        <h2 className="text-xl font-inter font-semibold text-foreground">
           Cash Flow
         </h2>
       </div>

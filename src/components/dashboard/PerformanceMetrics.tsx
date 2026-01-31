@@ -8,7 +8,7 @@ interface PerformanceMetricsProps {
 
 export const PerformanceMetrics = ({ stats }: PerformanceMetricsProps) => {
   const totalFlow = stats.totalReceived + stats.totalPaid;
-  
+
   const metrics = [
     {
       label: 'Net Balance',
@@ -50,7 +50,7 @@ export const PerformanceMetrics = ({ stats }: PerformanceMetricsProps) => {
         <div className="p-2 rounded-lg bg-neon-purple/10">
           <Gauge className="w-5 h-5 text-neon-purple" />
         </div>
-        <h2 className="text-xl font-orbitron font-semibold text-foreground">
+        <h2 className="text-xl font-inter font-semibold text-foreground">
           Financial Summary
         </h2>
       </div>
@@ -59,7 +59,7 @@ export const PerformanceMetrics = ({ stats }: PerformanceMetricsProps) => {
         {metrics.map((metric, index) => {
           const percentage = Math.min((Math.abs(metric.value) / metric.max) * 100, 100);
           const Icon = metric.icon;
-          
+
           return (
             <div key={index} className="group">
               <div className="flex items-center justify-between mb-2">
@@ -67,18 +67,18 @@ export const PerformanceMetrics = ({ stats }: PerformanceMetricsProps) => {
                   <Icon className={cn("w-4 h-4", `text-${metric.color}`)} />
                   <span className="text-sm text-muted-foreground">{metric.label}</span>
                 </div>
-                <span className="font-orbitron font-bold text-foreground">
+                <span className="font-inter font-bold text-foreground">
                   {metric.prefix && 'Rs '}
                   {typeof metric.value === 'number' ? metric.value.toLocaleString() : metric.value}
                 </span>
               </div>
               <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <div 
+                <div
                   className={cn(
                     "h-full rounded-full transition-all duration-1000 ease-out",
                     `bg-${metric.color}`
                   )}
-                  style={{ 
+                  style={{
                     width: `${percentage}%`,
                     boxShadow: `0 0 10px hsl(var(--${metric.color}))`,
                     background: `linear-gradient(90deg, hsl(var(--${metric.color})), hsl(var(--${metric.color}) / 0.7))`,

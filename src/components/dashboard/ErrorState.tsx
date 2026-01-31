@@ -12,7 +12,7 @@ export const ErrorState = ({ error, onRetry }: ErrorStateProps) => {
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-neon-red/10 flex items-center justify-center">
           <AlertTriangle className="w-8 h-8 text-neon-red" />
         </div>
-        <h2 className="text-xl font-orbitron font-bold text-foreground mb-2">
+        <h2 className="text-xl font-inter font-bold text-foreground mb-2">
           CONNECTION ERROR
         </h2>
         <p className="text-muted-foreground mb-6">{error}</p>

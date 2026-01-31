@@ -14,7 +14,7 @@ export const ClientTable = ({ data }: TransactionTableProps) => {
           <div className="p-2 rounded-lg bg-neon-cyan/10">
             <FileText className="w-5 h-5 text-neon-cyan" />
           </div>
-          <h2 className="text-xl font-orbitron font-semibold text-foreground">
+          <h2 className="text-xl font-inter font-semibold text-foreground">
             Transaction Ledger
           </h2>
         </div>
@@ -62,7 +62,7 @@ export const ClientTable = ({ data }: TransactionTableProps) => {
           <tbody>
             {data.map((transaction, index) => {
               return (
-                <tr 
+                <tr
                   key={`${transaction.srNo}-${index}`}
                   className={cn(
                     "border-b border-border/20 transition-all duration-300",
@@ -71,7 +71,7 @@ export const ClientTable = ({ data }: TransactionTableProps) => {
                   style={{ animationDelay: `${500 + index * 50}ms` }}
                 >
                   <td className="px-4 py-4">
-                    <span className="font-orbitron font-semibold text-neon-cyan">
+                    <span className="font-inter font-semibold text-neon-cyan">
                       {transaction.srNo}
                     </span>
                   </td>
@@ -87,7 +87,7 @@ export const ClientTable = ({ data }: TransactionTableProps) => {
                   </td>
                   <td className="px-4 py-4 text-center">
                     {transaction.received > 0 ? (
-                      <span className="font-orbitron font-semibold text-neon-green">
+                      <span className="font-inter font-semibold text-neon-green">
                         Rs {transaction.received.toLocaleString()}
                       </span>
                     ) : (
@@ -96,7 +96,7 @@ export const ClientTable = ({ data }: TransactionTableProps) => {
                   </td>
                   <td className="px-4 py-4 text-center">
                     {transaction.paid > 0 ? (
-                      <span className="font-orbitron font-semibold text-neon-red">
+                      <span className="font-inter font-semibold text-neon-red">
                         Rs {transaction.paid.toLocaleString()}
                       </span>
                     ) : (

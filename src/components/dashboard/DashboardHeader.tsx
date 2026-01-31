@@ -32,17 +32,17 @@ export const DashboardHeader = ({ lastUpdated, onRefresh, loading, error }: Dash
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <div className="relative">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-neon-cyan/20 to-neon-magenta/20 flex items-center justify-center border border-neon-cyan/30 animate-pulse-glow">
-              <Zap className="w-7 h-7 text-neon-cyan" />
+            <div className="w-14 h-14 rounded-xl overflow-hidden flex items-center justify-center border border-primary/30 animate-pulse-glow bg-background/50 shadow-[0_0_20px_rgba(37,150,190,0.1)]">
+              <img src="/logo.png" alt="Build Co Logo" className="w-full h-full object-contain p-1" />
             </div>
             <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-neon-green animate-pulse" />
           </div>
           <div>
-            <h1 className="text-3xl md:text-4xl font-orbitron font-bold text-gradient-cyber">
-              NEXUS ANALYTICS
+            <h1 className="text-3xl md:text-4xl font-inter font-bold text-gradient-brand text-shine">
+              BUILD CO ASSOCIATES
             </h1>
             <p className="text-muted-foreground text-sm mt-1">
-              Real-time Business Intelligence Dashboard
+              Crafting Your Legacy Today
             </p>
           </div>
         </div>
@@ -106,7 +106,7 @@ export const DashboardHeader = ({ lastUpdated, onRefresh, loading, error }: Dash
               </span>
             </div>
           )}
-          
+
           <button
             onClick={onRefresh}
             disabled={loading}

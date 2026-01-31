@@ -10,8 +10,8 @@ export const LoadingState = () => {
             <Loader2 className="w-8 h-8 text-neon-magenta animate-pulse" />
           </div>
         </div>
-        <h2 className="text-2xl font-orbitron font-bold text-gradient-cyber mb-2">
-          INITIALIZING NEXUS
+        <h2 className="text-2xl font-inter font-bold text-foreground mb-2 text-gradient-cyber">
+          LOADING DASHBOARD
         </h2>
         <p className="text-muted-foreground animate-pulse">
           Establishing data connection...

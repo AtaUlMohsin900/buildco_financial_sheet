@@ -15,8 +15,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        orbitron: ['Orbitron', 'monospace'],
-        rajdhani: ['Rajdhani', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        orbitron: ['Inter', 'sans-serif'],
+        rajdhani: ['Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

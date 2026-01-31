@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -36,20 +37,29 @@
 
     --radius: 0.75rem;
 
-    /* Cyberpunk custom colors */
+    /* BuildCo Brand Colors */
+    --brand-blue: 196 67% 45%;
+    /* #2596be */
+    --brand-navy: 215 39% 15%;
+    /* #162234 */
+    --brand-gold: 41 76% 56%;
+    /* #e4ab38 */
+
+    /* Cyberpunk custom colors (Reverted) */
     --neon-cyan: 180 100% 50%;
     --neon-magenta: 300 100% 50%;
     --neon-purple: 270 100% 60%;
     --neon-green: 150 100% 50%;
     --neon-orange: 30 100% 50%;
     --neon-red: 0 100% 50%;
-    
+
     /* Glassmorphism */
     --glass-bg: 240 10% 10% / 0.6;
     --glass-border: 180 50% 30% / 0.3;
     --glass-glow: 180 100% 50% / 0.1;
-    
+
     /* Gradients */
+    --gradient-brand: linear-gradient(135deg, hsl(var(--brand-blue)) 0%, hsl(var(--brand-gold)) 50%, hsl(var(--brand-navy)) 100%);
     --gradient-cyber: linear-gradient(135deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-magenta)) 50%, hsl(var(--neon-purple)) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(240 10% 6%) 0%, hsl(240 10% 3%) 100%);
     --gradient-card: linear-gradient(135deg, hsl(240 10% 12% / 0.8) 0%, hsl(240 10% 6% / 0.6) 100%);
@@ -71,7 +81,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-rajdhani antialiased;
+    @apply bg-background text-foreground font-inter antialiased;
     background: var(--gradient-dark);
     background-attachment: fixed;
   }
@@ -83,7 +93,7 @@
     background: linear-gradient(135deg, hsl(240 10% 12% / 0.7) 0%, hsl(240 10% 6% / 0.5) 100%);
     backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--glass-border));
-    box-shadow: 
+    box-shadow:
       0 0 20px hsl(var(--glass-glow)),
       inset 0 1px 0 hsl(180 50% 50% / 0.1);
   }
@@ -100,7 +110,7 @@
 
   .neon-text {
     @apply text-primary;
-    text-shadow: 
+    text-shadow:
       0 0 10px hsl(var(--neon-cyan)),
       0 0 20px hsl(var(--neon-cyan) / 0.8),
       0 0 40px hsl(var(--neon-cyan) / 0.6);
@@ -108,7 +118,7 @@
 
   .neon-text-magenta {
     @apply text-secondary;
-    text-shadow: 
+    text-shadow:
       0 0 10px hsl(var(--neon-magenta)),
       0 0 20px hsl(var(--neon-magenta) / 0.8),
       0 0 40px hsl(var(--neon-magenta) / 0.6);
@@ -116,20 +126,20 @@
 
   .neon-border {
     border: 1px solid hsl(var(--neon-cyan) / 0.5);
-    box-shadow: 
+    box-shadow:
       0 0 10px hsl(var(--neon-cyan) / 0.3),
       inset 0 0 10px hsl(var(--neon-cyan) / 0.1);
   }
 
   .neon-glow {
-    box-shadow: 
+    box-shadow:
       0 0 20px hsl(var(--neon-cyan) / 0.4),
       0 0 40px hsl(var(--neon-cyan) / 0.2),
       0 0 60px hsl(var(--neon-cyan) / 0.1);
   }
 
   .cyber-grid {
-    background-image: 
+    background-image:
       linear-gradient(hsl(180 50% 20% / 0.1) 1px, transparent 1px),
       linear-gradient(90deg, hsl(180 50% 20% / 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
@@ -147,10 +157,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      transparent 50%,
-      hsl(var(--neon-cyan) / 0.02) 50%
-    );
+    background: linear-gradient(transparent 50%,
+        hsl(var(--neon-cyan) / 0.02) 50%);
     background-size: 100% 4px;
     pointer-events: none;
   }
@@ -175,23 +183,17 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      hsl(var(--neon-cyan) / 0.1),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        hsl(var(--neon-cyan) / 0.1),
+        transparent);
     animation: shimmer 3s infinite;
   }
 }
 
 @layer utilities {
-  .font-orbitron {
-    font-family: 'Orbitron', monospace;
-  }
-
-  .font-rajdhani {
-    font-family: 'Rajdhani', sans-serif;
+  .font-inter {
+    font-family: 'Inter', sans-serif;
   }
 
   .text-gradient-cyber {
@@ -200,13 +202,43 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  .text-gradient-brand {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .text-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60px;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent);
+    transform: skewX(-25deg);
+    animation: textShine 4s infinite;
+  }
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     filter: brightness(1);
   }
+
   50% {
     opacity: 0.8;
     filter: brightness(1.2);
@@ -214,9 +246,12 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -226,19 +261,34 @@
   0% {
     left: -100%;
   }
+
   100% {
     left: 100%;
   }
 }
 
 @keyframes borderGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     border-color: hsl(var(--neon-cyan) / 0.5);
     box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.3);
   }
+
   50% {
     border-color: hsl(var(--neon-magenta) / 0.5);
     box-shadow: 0 0 20px hsl(var(--neon-magenta) / 0.3);
+  }
+}
+
+@keyframes textShine {
+  0% {
+    left: -100%;
+  }
+
+  20%,
+  100% {
+    left: 200%;
   }
 }
 
@@ -246,6 +296,7 @@
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 200% 50%;
   }

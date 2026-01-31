@@ -46,18 +46,18 @@ const accentStyles = {
   },
 };
 
-export const StatCard = ({ 
-  title, 
-  value, 
-  icon, 
-  trend, 
+export const StatCard = ({
+  title,
+  value,
+  icon,
+  trend,
   accentColor = 'cyan',
-  delay = 0 
+  delay = 0
 }: StatCardProps) => {
   const styles = accentStyles[accentColor];
 
   return (
-    <div 
+    <div
       className={cn(
         "glass-card p-6 transition-all duration-500 cursor-pointer group",
         "hover:translate-y-[-4px] hover:scale-[1.02]",
@@ -80,8 +80,8 @@ export const StatCard = ({
         {trend && (
           <div className={cn(
             "flex items-center gap-1 text-sm font-medium px-2 py-1 rounded-full",
-            trend.isPositive 
-              ? "text-neon-green bg-neon-green/10" 
+            trend.isPositive
+              ? "text-neon-green bg-neon-green/10"
               : "text-neon-red bg-neon-red/10"
           )}>
             <span>{trend.isPositive ? '↑' : '↓'}</span>
@@ -89,19 +89,19 @@ export const StatCard = ({
           </div>
         )}
       </div>
-      
+
       <div className="space-y-1">
         <p className="text-muted-foreground text-sm font-medium uppercase tracking-wider">
           {title}
         </p>
-        <p className="text-3xl font-orbitron font-bold tracking-tight text-foreground">
+        <p className="text-3xl font-inter font-bold tracking-tight text-foreground">
           {value}
         </p>
       </div>
 
       {/* Animated bottom border */}
       <div className="absolute bottom-0 left-0 right-0 h-[2px] overflow-hidden">
-        <div 
+        <div
           className={cn(
             "h-full w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300",
             "bg-gradient-to-r from-transparent via-current to-transparent",
