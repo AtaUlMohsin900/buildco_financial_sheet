@@ -60,7 +60,7 @@ export const ClientTable = ({ data }: TransactionTableProps) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((transaction, index) => {
+            {[...data].reverse().map((transaction, index) => {
               return (
                 <tr
                   key={`${transaction.srNo}-${index}`}

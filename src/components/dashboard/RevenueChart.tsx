@@ -7,24 +7,39 @@ interface RevenueChartProps {
 }
 
 export const RevenueChart = ({ data }: RevenueChartProps) => {
-  const chartData = data.slice(0, 10).map(transaction => ({
-    name: transaction.date,
-    received: transaction.received,
-    paid: transaction.paid,
-    description: transaction.description,
-  }));
+  // Group data by date to ensure one entry per day with cumulative received/paid
+  const groupedData = data.reduce((acc: any, curr) => {
+    const date = curr.date;
+    if (!acc[date]) {
+      acc[date] = { name: date, received: 0, paid: 0, count: 0 };
+    }
+    acc[date].received += curr.received;
+    acc[date].paid += curr.paid;
+    acc[date].count += 1;
+    return acc;
+  }, {});
 
-  const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: { payload: { description: string }; value: number }[] }) => {
+  const chartData = Object.values(groupedData).sort((a: any, b: any) => {
+    return new Date(a.name).getTime() - new Date(b.name).getTime();
+  });
+
+  const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: any[] }) => {
     if (active && payload && payload.length) {
+      const { name, count } = payload[0].payload;
       return (
-        <div className="glass-card p-3 !bg-background/95">
-          <p className="text-sm text-muted-foreground mb-1">{payload[0].payload.description}</p>
-          <p className="text-sm font-inter text-neon-green">
-            Received: Rs {payload[0]?.value?.toLocaleString() || 0}
-          </p>
-          <p className="text-sm font-inter text-neon-orange">
-            Paid: Rs {payload[1]?.value?.toLocaleString() || 0}
-          </p>
+        <div className="glass-card p-3 !bg-background/95 min-w-[150px]">
+          <p className="text-sm font-semibold mb-1 text-foreground">{name}</p>
+          <p className="text-xs text-muted-foreground mb-2">{count} transaction{count !== 1 ? 's' : ''}</p>
+          <div className="space-y-1">
+            <p className="text-sm font-inter text-neon-green flex justify-between gap-4">
+              <span>Received:</span>
+              <span>Rs {payload[0]?.value?.toLocaleString() || 0}</span>
+            </p>
+            <p className="text-sm font-inter text-neon-orange flex justify-between gap-4">
+              <span>Paid:</span>
+              <span>Rs {payload[1]?.value?.toLocaleString() || 0}</span>
+            </p>
+          </div>
         </div>
       );
     }
