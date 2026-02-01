@@ -99,7 +99,7 @@ export const useGoogleSheetsData = () => {
     setError(null);
 
     try {
-      const response = await fetch(SHEET_URL);
+      const response = await fetch(`${SHEET_URL}&t=${Date.now()}`);
       if (!response.ok) throw new Error('Failed to fetch data');
 
       const csv = await response.text();
